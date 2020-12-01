@@ -16,8 +16,6 @@ def getRecipe(str):
     source = r.text
     #print(r.text)
 
-    codes = "æ" = "\u00e6", "ø" = "\u00f8", "å" ="\u00e5"
-
     #pattern_title = '<h1 class="title">(.*?)</h1>' #With question marks for æ,ø,å
     pattern_title = '"name": "(.*?)",' #With unicode characters
     #pattern_ingredients = '<div class="spice-[0-9]">(.*)</div>'
@@ -34,17 +32,17 @@ def getRecipe(str):
     else:
         ingredients = matches_ingredients[0].split("<br />")
         
-        #Checks for æ,ø,å and replaces unicode with letter
-        for i in range(len(matches_title)):
-            if matches_title[i] == codes[0][0]:
-                for y in range(0, 2):
-                    if matches_title[i+6] == codes[y][5]:
-                        if y == 0:
-                            matches_title.insert(i,"æ")
-                        if y == 1:
-                            matches_title.insert(i,"ø")
-                        if y == 2:
-                            matches_title.insert(i,"å")
+        # #Checks for æ,ø,å and replaces unicode with letter
+        # for i in range(len(matches_title)):
+        #     if matches_title[i] == codes[0][0]:
+        #         for y in range(0, 2):
+        #             if matches_title[i+6] == codes[y][5]:
+        #                 if y == 0:
+        #                     matches_title.insert(i,"æ")
+        #                 if y == 1:
+        #                     matches_title.insert(i,"ø")
+        #                 if y == 2:
+        #                     matches_title.insert(i,"å")
 
         new_recipe = {'name': matches_title,
             'ingredients': ingredients, 'url': r.url}

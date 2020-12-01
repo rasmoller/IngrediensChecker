@@ -20,14 +20,14 @@ import re
 ####################################################################
 # Need a loop to iterate through different website (recipes)
 
-#for i in range(4400, 4410):
-# url ="https://meny.dk/node/" + str(i)
+for i in range(4400, 4410):
+    url ="https://meny.dk/node/" + str(i)
+    r = requests.get(url)
 
 
 
+#url = "https://www.dk-kogebogen.dk/opskrifter/5372/spaghetti-carbonara"
 
-url = "https://www.dk-kogebogen.dk/opskrifter/5372/spaghetti-carbonara"
-r = requests.get(url)
 
 source = r.text
 dict = {"æ": "\xc3\xa6", "ø": "\xc3\xb8", "å": "\xc3\xa5"}
